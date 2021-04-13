@@ -9,7 +9,7 @@
 
 	<body>
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<!--        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>-->
         
         
         <div id="info">
@@ -20,12 +20,12 @@
         <script type="module">
 
             import * as THREE from '../build/three.module.js';
-            import { GLTFLoader } from '../jsm/loaders/GLTFLoader.js';
-            import { GUI } from '../jsm/libs/dat.gui.module.js';
-            import Stats from '../jsm/libs/stats.module.js';
-            import { BufferGeometryUtils } from '../jsm/utils/BufferGeometryUtils.js';
+            import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
+            import { GUI } from './jsm/libs/dat.gui.module.js';
+            import Stats from './jsm/libs/stats.module.js';
+            import { BufferGeometryUtils } from './jsm/utils/BufferGeometryUtils.js';
             //import '../build/cannon.js';
-            import '../bllem-cannon.js';
+            import './bllem-cannon.js';
 
             let camera, scene, renderer, world, mass, body, shape, geometry, material, mesh, flipperleft, flipperright, field, bumperleft, bumperright, object, c, h;
             
