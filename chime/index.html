@@ -19,13 +19,13 @@
 
         <script type="module">
 
-            import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r127/three.module.js';
-            import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
-            import { GUI } from './jsm/libs/dat.gui.module.js';
-            import Stats from './jsm/libs/stats.module.js';
-            import { BufferGeometryUtils } from './jsm/utils/BufferGeometryUtils.js';
+            import * as THREE from '../build/three.module.js';
+            import { GLTFLoader } from '../jsm/loaders/GLTFLoader.js';
+            import { GUI } from '../jsm/libs/dat.gui.module.js';
+            import Stats from '../jsm/libs/stats.module.js';
+            import { BufferGeometryUtils } from '../jsm/utils/BufferGeometryUtils.js';
             //import '../build/cannon.js';
-            import './bllem-cannon.js';
+            import '../bllem-cannon.js';
 
             let camera, scene, renderer, world, mass, body, shape, geometry, material, mesh, flipperleft, flipperright, field, bumperleft, bumperright, object, c, h;
             
@@ -172,7 +172,7 @@
 
                 // load a sound and set it as the Audio object's buffer
                 const audioLoader = new THREE.AudioLoader();
-                audioLoader.load( 'sounds/tam-tam__long_forte_scraped.mp3', function( buffer ) {
+                audioLoader.load( '../sounds/tam-tam__long_forte_scraped.mp3', function( buffer ) {
                     sound.setBuffer( buffer );
                     sound.setLoop( false );
                     sound.setVolume( 0.5 );
