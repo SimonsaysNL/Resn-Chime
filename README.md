@@ -37,9 +37,9 @@
 ![](resn-chime-preview.gif)
 
 Recreation of a demo on the Resn Website.
-No revers engineering or inspecting of the original was done.
+No reverse engineering or inspecting of the original was done.
 
-Content is for demo purposes.
+Content is for demo and learning purposes.
 
 ### Built With
 
