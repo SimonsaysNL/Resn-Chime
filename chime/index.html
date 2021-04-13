@@ -14,7 +14,7 @@
         
         <div id="info">
             <a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - Resn chime<br />
-            Hit bar with sphere
+            Drag sphere to hit chime
         </div>
 
         <script type="module">
@@ -38,6 +38,7 @@
             let loadingDone = false;
             
             let loaded = {};
+            let pressed = false;
             
             let balls = {};
             let ballscount = 0;
@@ -203,6 +204,14 @@
                 
 				window.addEventListener( 'resize', onWindowResize );
                 
+                document.addEventListener('mousedown', function(){
+                    pressed = true;
+                });
+                
+                document.addEventListener('mouseup', function(){
+                    pressed = false;
+                });
+                
                 document.addEventListener('mousemove', onMouseMove, false);
 
 			}
@@ -221,8 +230,10 @@
                 var dir = vector.sub( camera.position ).normalize();
                 var distance = - camera.position.z / dir.z;
                 var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
-                body.position.copy(pos);
-                balls[0].position.copy(pos);
+                if (pressed){
+                    body.position.copy(pos);
+                    balls[0].position.copy(pos);
+                }
 
                 // Make the sphere follow the mouse                
                 var from = new CANNON.Vec3(body.position.x,body.position.y, body.position.z);
@@ -238,7 +249,7 @@
 
                 const intersects = ray.intersectObjects( objects );
                 const intersectsphere = ray.intersectObject( sphere );
-                if (intersects.length != 0 && !sound.isPlaying) {
+                if (intersects.length != 0 && !sound.isPlaying && pressed) {
                     var objname = intersects[0].object.name;
                     intersects[0].object.material.color.set( 0xffffff );
                     
