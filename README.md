@@ -58,4 +58,4 @@ Content is for demo and learning purposes.
 
 Simon Kissing - [@realtimesimon](https://twitter.com/realtimesimon) - kissingsimon@gmail.com
 
-Project Link: [https://github.com/SimonsaysNL/Pinball-Dot-Matix-Display/](https://github.com/SimonsaysNL/Resn-Chime/)
+Project Link: [https://github.com/SimonsaysNL/Resn-Chime/](https://github.com/SimonsaysNL/Resn-Chime/)
