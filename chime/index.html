@@ -27,7 +27,7 @@
             //import '../build/cannon.js';
             import './bllem-cannon.js';
 
-            let camera, scene, renderer, world, mass, body, shape, geometry, material, mesh, flipperleft, flipperright, field, bumperleft, bumperright, object, c, h;
+            let camera, scene, renderer, world, mass, body, shape, geometry, material, mesh, object, c, h;
             
             const timeStep = 1/60;
             
@@ -35,9 +35,6 @@
 
             const manager = new THREE.LoadingManager();
             
-            let loadingDone = false;
-            
-            let loaded = {};
             let pressed = false;
             
             let balls = {};
@@ -144,8 +141,8 @@
                 world.addBody(barbody);
                 world.addBody(hingebody);
                 
-                var axis = new CANNON.Vec3(0.4,0.4,0.4);
-                var angle = Math.PI / 2;
+                const axis = new CANNON.Vec3(0.4,0.4,0.4);
+                const angle = Math.PI / 2;
                 barbody.quaternion.setFromAxisAngle(axis, angle);
                 
                 world.addContactMaterial(mat_ground);
@@ -225,24 +222,24 @@
                 mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
              // Make the sphere follow the mouse
-                var vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+                const vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
                 vector.unproject( camera );
-                var dir = vector.sub( camera.position ).normalize();
-                var distance = - camera.position.z / dir.z;
-                var pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
+                const dir = vector.sub( camera.position ).normalize();
+                const distance = - camera.position.z / dir.z;
+                const pos = camera.position.clone().add( dir.multiplyScalar( distance ) );
                 if (pressed){
                     body.position.copy(pos);
                     balls[0].position.copy(pos);
                 }
 
                 // Make the sphere follow the mouse                
-                var from = new CANNON.Vec3(body.position.x,body.position.y, body.position.z);
-                var to = new CANNON.Vec3(body.position.x, body.position.y, body.position.z);
-                var ray = new THREE.Raycaster();
+                const from = new CANNON.Vec3(body.position.x,body.position.y, body.position.z);
+                const to = new CANNON.Vec3(body.position.x, body.position.y, body.position.z);
+                const ray = new THREE.Raycaster();
                 ray.setFromCamera( mouse, camera );
-                var objects = [];
+                let objects = [];
                 
-                var i;
+                let i;
                 for(i=0; i < barammount; i++){
                     objects.push(bars[i]);
                 }
@@ -250,14 +247,14 @@
                 const intersects = ray.intersectObjects( objects );
                 const intersectsphere = ray.intersectObject( sphere );
                 if (intersects.length != 0 && !sound.isPlaying && pressed) {
-                    var objname = intersects[0].object.name;
+                    const objname = intersects[0].object.name;
                     intersects[0].object.material.color.set( 0xffffff );
                     
                     gsap.to(intersects[0].object.material, {opacity: 0.75, duration: 0.2});
                     gsap.to(intersects[0].object.material, {opacity: 0, delay:0.2, duration: 1});
 
                     
-                    var worldPosition = new THREE.Vector3();
+                    const worldPosition = new THREE.Vector3();
                     for(i=0; i < barammount; i++){
                         if (objname == "bar"+i){
                             sound.detune = 100*i;
@@ -324,9 +321,9 @@
                 
                 group = new THREE.Group();
                 
-                var i;
+                let i;
                 for(i=0; i < barammount; i++){
-                    var barheightnew = barheighttemp*i;
+                    const barheightnew = barheighttemp*i;
                     materials[i] = new THREE.MeshBasicMaterial({
                         color: 0xffffff,
                         opacity: 0,
@@ -383,7 +380,6 @@
                     sphereHinge.position.copy(hingebody.position);
                     sphereHinge.quaternion.copy(hingebody.quaternion);
                 }
-
             }
             
             function animate() {
